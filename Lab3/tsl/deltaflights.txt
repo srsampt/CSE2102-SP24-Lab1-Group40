@@ -1,0 +1,54 @@
+
+
+Parameters:
+    Departure Location:
+        BDL.                                            # Hartford/Springfield
+        PVD.                                [single]    # Providence, RI
+        Invalid Departure Location.         [error]
+    Arrival Location:
+        ATL.                                            # Atlanta, GA
+        EWR.                                [single]    # Newark, NJ
+        MSP.                                [single]    # Minneapolis St. Paul, MN (for testing the non-stop)
+        Invalid Arrival Location.           [error]
+    Departure Date:
+        Today.                              [property DepartToday]
+        One month from today.               [property DepartOneMonth]
+        Eleven months from today.           [property DepartElevenMonths]
+        Out of Range Departure Date.        [error]
+        Invalid Departure Date.             [error]
+    Return Date:
+        Today.                              [if DepartToday] 
+        One month from today.               [if DepartToday || DepartOneMonth]
+        Eleven months from today.
+        Out of Range Return Date.           [error]
+        Invalid Return Date.                [error]
+    Best Fares For:
+        Basic Economy.                      [property BasicEconomy]
+        Main Cabin.                         [property MainCabin]
+        Delta Comfort Plus.                 [property ComfortPlus] [single]
+        First Class.                        [property FirstClass] [single]
+        Delta Premium Select.               [property PremiumSelect] [single]
+        Delta One.                          [property DeltaOne] [single]
+    Number Of Passengers:
+        One passenger.                      [property OnePassenger]
+        Four passengers.                    [property FourPassengers]
+        Nine passenger.                     [property NinePassengers] [single] [else]
+        Invalid Number of Passengers.       [error]
+
+
+Search Options:
+    Shop With Miles:
+        Enabled.                            [property ShopWithMiles]
+        Disabled.
+    My Dates Are Flexible:
+        Enabled.                            [property FlexibleDates]
+        Disabled. 
+    Refundable Fares:
+        Enabled.                            [if !ShopWithMiles]
+        Disabled.                           [if !ShopWithMiles]
+    ShowFares:
+        Include Nearby Airports.            [if ShopWithMiles || !FlexibleDates] [property IncludeNearbyAirports] [else] [error]
+    Meeting:
+        Valid Meeting Code.                 [if !ShopWithMiles] 
+        Invalid Meeting Code.               [if !ShopWithMiles] [error]
+        Blank Meeting Code Field.           [if !ShopWithMiles] [single]
