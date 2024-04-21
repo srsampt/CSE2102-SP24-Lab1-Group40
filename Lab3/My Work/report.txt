@@ -1,0 +1,28 @@
+Lab 3 Report
+
+Test Frames Generated: 162
+
+
+1. The meeting code event field is optional. How can you handle this field in TSL?
+
+When "Shop With Miles" is enabled, the meeting code event field becomes unavailable. To handle this behavior, I added a property which only enables
+"Meeting Code" when "Shop With Miles" is disabled. Each of the three states available to "Meeting Code" - Valid Meeting Code, Invalid Meeting Code, 
+and Blank Meeting Code Field - can only be accessed when [if !ShopWithMiles]. Otherwise, "Meeting Code" is disabled entirely.
+
+
+2. Notice that the some fields (e.g., “My dates are flexible” and “Include Nearby Airports”) are mutually exclusive. How can you use the [property] and [if] 
+features of the TSL specification language to reflect this? 
+
+Using the [property] feature of TSL, I assigned properties to these mutually exclusive fields for their "Enabled" state. I was then able to access these properties
+using the [if] feature of TSL,  to ensure that if one of the mutually exclusive fields is enabled, the other is disabled. For example, the "Refundable Fares" field
+only becomes available to be enabled/disable [if !ShopWithMiles], and the option to include nearby airports (the "Show Fares" field) only becomes available to be 
+enabled/disabled [if ShopWithMiles || !FlexibleDates].
+
+
+3. When the Shop with Miles is selected, how does the form change? How may you reflect this in the TSL? 
+
+When Shop With Miles is enabled, the option to input a meeting code is removed. Similarly, the "Refundable Fares" field becomes unavailable. Thus, in order
+for these fields to be available to enable/disable, there must be a check that [if !ShopWithMiles]. 
+
+Additionally, "My dates are flexible" is selected by default upon selecting Shop with Miles. However, it can be unselected. Since it can be unselected, the option
+to either enable or disable "My dates are flexible" is still there. Thus, this does not need to be reflected in the TSL.

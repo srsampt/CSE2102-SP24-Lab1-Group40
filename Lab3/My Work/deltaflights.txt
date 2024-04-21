@@ -46,9 +46,9 @@ Search Options:
     Refundable Fares:
         Enabled.                            [if !ShopWithMiles]
         Disabled.                           [if !ShopWithMiles]
-    ShowFares:
+    Show Fares:
         Include Nearby Airports.            [if ShopWithMiles || !FlexibleDates] [property IncludeNearbyAirports] [else] [error]
-    Meeting:
+    Meeting Code:
         Valid Meeting Code.                 [if !ShopWithMiles] 
         Invalid Meeting Code.               [if !ShopWithMiles] [error]
         Blank Meeting Code Field.           [if !ShopWithMiles] [single]
